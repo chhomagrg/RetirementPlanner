@@ -1,0 +1,131 @@
+/* General*/
+body {
+    font-family: "Playfair Display", serif;
+    margin: 20px;
+    line-height: 1.6;
+    background-color: #FAEBD7;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Shadows Into Light", serif;
+    color: #FAEBD7;
+    background-color: #4B000F;
+    font-size: 5rem;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+    color: #4B000F;
+}
+
+p {
+    font-size: 1.5rem;
+    color: #4B000F;
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(75, 0, 15, 0.8);
+    background-color: rgba(250, 235, 215, 0.9);
+    padding: 20px;
+}
+
+/* Form */
+.form-container {
+    flex: 1;
+    max-width: 400px;
+    border: 2px solid #800020;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: rgba(75, 0, 15, 0.1);
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    margin-top: 10px;
+    color: #4B000F;
+}
+
+.form-container input, .form-container button {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Buttons */
+button {
+    background-color: #8B0000;
+    color: #FAEBD7;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-family: "Playfair Display", serif;
+}
+
+button:hover {
+    background-color: #4B000F;
+}
+
+/* Chart */
+.chart-container {
+    flex: 2;
+    border: 2px solid #800020;
+    border-radius: 20px;
+    background-color: rgba(75, 0, 15, 0.1);
+}
+
+.chart-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.7rem;
+    color: #4B000F;
+}
+
+.chart-container p {
+    font-size: 1.3rem;
+    color: #4B000F;
+    text-align: center;
+}
+
+/* Results */
+.results-container {
+    margin: 20px;
+    padding: 15px;
+    border: 2px solid #800020;
+    border-radius: 20px;
+    background-color: rgba(75, 0, 15, 0.19);
+}
+
+.results-container h2 {
+    font-size: 1.7rem;
+}
+
+.results-container p {
+    font-size: 1.5rem;
+    color: #4B000F;
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /
+    }
+
+    .chart-container iframe {
+        height: 400px;
+    }
+}

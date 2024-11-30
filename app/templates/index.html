@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Retirement Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shadows+Into+Light&family=Walter+Turncoat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <h1>Retirement Planner</h1>
+
+    <div class="container">
+        <!-- Form  -->
+        <div class="form-container">
+            <form method="POST">
+                <label>What is your current age?</label>
+                <input type="number" name="current_age" value="{{ request.form.get('current_age', 25) }}" required><br>
+
+                <label>At what age do you plan to retire?</label>
+                <input type="number" name="retirement_age" value="{{ request.form.get('retirement_age', 65) }}" required><br>
+
+                <label>How much do you have currently saved/invested? ($):</label>
+                <input type="number" name="current_savings" value="{{ request.form.get('current_savings', 10000) }}" required><br>
+
+                <label>What is the annual return rate (or interest rate) on your savings/investments? (%):</label>
+                <input type="number" step="0.01" name="annual_return" value="{{ request.form.get('annual_return', 7) }}" required><br>
+
+                <label>What is your current Annual Income? ($):</label>
+                <input type="number" name="annual_income" value="{{ request.form.get('annual_income', 60000) }}" required><br>
+
+                <label>How much do you plan to save annually? (%):</label>
+                <input type="number" name="savings_rate" value="{{ request.form.get('savings_rate', 15) }}" required><br>
+
+                <label>What is your expected annual income growth rate? (%):</label>
+                <input type="number" step="0.01" name="income_growth_rate" value="{{ request.form.get('income_growth_rate', 2) }}" required><br>
+
+                <label>What is the current inflation rate? (%):</label>
+                <input type="number" step="0.01" name="inflation_rate" value="{{ request.form.get('inflation_rate', 3) }}" required><br>
+
+                <button type="submit">Calculate</button>
+            </form>
+
+        </div>
+
+        <!-- Chart -->
+        <div class="chart-container">
+            <h2>Savings Growth Chart</h2>
+            <p>The chart below compares your unadjusted savings (raw growth) with inflation-adjusted savings (real purchasing power).</p>
+            <iframe src="{{ url_for('static', filename='savings_chart.html') }}" width="100%" height="600" frameborder="0"></iframe>
+
+            <!-- Results -->
+            {% if total_savings %}
+                <div class="results-container">
+                    <h2>Results</h2>
+                    <p><strong>Total Savings by Retirement:</strong> ${{ total_savings }}</p>
+                    <p><strong>Inflation-Adjusted Savings by Retirement:</strong> ${{ inflation_adjusted_savings }}</p>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</body>
+</html>
